@@ -7,12 +7,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class WelcomeController {
 
-    @Value("${WELCOME_MESSAGE}")
+
     private String message;
 
-    public WelcomeController() {}
-
-    public WelcomeController(String message) {
+    public WelcomeController(@Value("${welcome.message}") String message) {
         this.message = message;
     }
 
@@ -21,11 +19,4 @@ public class WelcomeController {
         return message;
     }
 
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
 }

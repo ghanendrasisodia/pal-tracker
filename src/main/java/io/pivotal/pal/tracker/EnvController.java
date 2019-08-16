@@ -10,26 +10,19 @@ import java.util.Map;
 @RestController
 public class EnvController {
 
-    @Value("${PORT}")
     private String port;
-
-    @Value("${MEMORY_LIMIT}")
     private String memoryLimit;
-
-    @Value("${PORT}")
     private String cfInstanceIndex;
-
-    @Value("${PORT}")
     private String cfInstanceAddr;
 
-    public EnvController() {
-        super();
-    }
-    public EnvController(String port, String memoryLimit, String cfInstanceIndex, String cfInstanceAddr) {
-        this.port=port;
-        this.memoryLimit=memoryLimit;
-        this.cfInstanceIndex=cfInstanceIndex;
-        this.cfInstanceAddr=cfInstanceAddr;
+    public EnvController(@Value("${port:NOT SET}") String port,
+                        @Value("${memory.limit:NOT SET}") String memoryLimit,
+                        @Value("${cf.instance.index:NOT SET}") String cfInstanceIndex,
+                        @Value("${cf.instance.addr:NOT SET}") String cfInstanceAddress) {
+        this.port = port;
+        this.memoryLimit = memoryLimit;
+        this.cfInstanceIndex = cfInstanceIndex;
+        this.cfInstanceAddr = cfInstanceAddress;
     }
 
     @GetMapping("/env")
@@ -43,4 +36,5 @@ public class EnvController {
 
         return envMap;
     }
+
 }
