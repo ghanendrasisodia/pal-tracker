@@ -19,6 +19,7 @@ apply plugin: 'org.springframework.boot'
 repositories {
     mavenCentral()
 }
+
 dependencies {
     compile "org.springframework.boot:spring-boot-starter-web:$springBootVersion"
 
